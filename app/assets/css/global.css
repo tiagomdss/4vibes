@@ -1,0 +1,46 @@
+/*
+  COLE AQUI TODO O CONTEÚDO DA SUA TAG <style>
+  do 'index.html', começando de ':root' até '@media (prefers-reduced-motion: reduce)'.
+*/
+
+:root {
+  --bp-pink: #FF4D8D;
+  --bp-purple: #8B5CF6;
+  --bp-cyan: #06B6D4;
+  --bp-black: #050505;
+  --glow-size: 150px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bp-black);
+  color: white;
+  overflow-x: hidden;
+  /* O cursor customizado será um componente Vue, então podemos remover o 'cursor: none' daqui */
+}
+
+/* Loading Screen */
+/* ... (todo o seu CSS) ... */
+
+/* Parallax Enhancements */
+.parallax-element {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ... (etc) ... */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
