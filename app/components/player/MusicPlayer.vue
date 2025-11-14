@@ -3,7 +3,7 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div class="flex items-center gap-4">
         <img
-          src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=1000&auto=format&fit=crop"
+          src="/images/album/4thetop.png"
           alt="Album"
           class="w-16 h-16 object-cover"
         >
@@ -56,7 +56,8 @@ onMounted(() => {
 
   // Cria o áudio escondido
   const audio = document.createElement('audio')
-  audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+  // Arquivo local servido a partir de public/music
+  audio.src = '/music/4-the-win.mp3'
   audio.loop = true
   audio.volume = 0.5
   audioPlayer.value = audio

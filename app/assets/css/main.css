@@ -6,6 +6,10 @@
   --glow-size: 150px;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -93,6 +97,7 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
+  overflow-x: hidden;
 }
 
 /* Animated Gradient Background */
@@ -106,6 +111,7 @@ body {
   background: linear-gradient(45deg, #000, #1a0033, #000, #330019);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+  overflow-x: hidden;
 }
 
 @keyframes gradientShift {
