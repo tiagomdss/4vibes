@@ -18,7 +18,6 @@
         <div
           class="member-card group relative h-[600px] overflow-hidden cursor-pointer"
           data-aos="fade-up"
-          data-aos-delay="100"
         >
           <img
             src="/images/members/lucy.png"
@@ -42,7 +41,6 @@
         <div
           class="member-card group relative h-[600px] overflow-hidden cursor-pointer"
           data-aos="fade-up"
-          data-aos-delay="200"
         >
           <img
             src="/images/members/hyuna.png"
@@ -66,7 +64,6 @@
         <div
           class="member-card group relative h-[600px] overflow-hidden cursor-pointer"
           data-aos="fade-up"
-          data-aos-delay="300"
         >
           <img
             src="/images/members/paty.png"
@@ -90,7 +87,6 @@
         <div
           class="member-card group relative h-[600px] overflow-hidden cursor-pointer"
           data-aos="fade-up"
-          data-aos-delay="400"
         >
           <img
             src="/images/members/alice.png"
