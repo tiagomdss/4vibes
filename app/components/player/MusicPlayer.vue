@@ -1,11 +1,24 @@
 <template>
   <div class="player" id="player">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div class="flex items-center gap-4">
+    <div/>
+    <!-- Top bar com botão de fechar -->
+    <div class="flex justify-end mb-1">
+      <button
+        id="closePlayerBtn"
+        class="text-lg opacity-80 hover:opacity-100 transition-opacity"
+        aria-label="Close player"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+<div/>
+    <div class="flex flex-row justify-between gap-4 ">
+      <!-- Coluna 1: capa + título -->
+      <div class="flex items-center gap-3 min-w-[140px]">
         <img
           src="/images/album/4thetop.png"
           alt="Album"
-          class="w-16 h-16 object-cover"
+          class="w-20 h-20 md:w-24 md:h-24 object-cover rounded-lg"
         >
         <div>
           <div class="font-display text-lg">4 THE WIN</div>
@@ -13,7 +26,8 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-6">
+      <!-- Coluna 2: controles -->
+      <div class="flex items-center justify-center gap-6 md:gap-8 flex-shrink-0">
         <button class="text-xl" id="prevBtn" aria-label="Previous">
           <i class="fas fa-step-backward"></i>
         </button>
@@ -27,9 +41,10 @@
         <button class="text-xl" id="nextBtn" aria-label="Next">
           <i class="fas fa-step-forward"></i>
         </button>
-      </div>
 
-      <div class="flex items-center gap-3 w-full md:w-auto">
+      </div>
+      <!-- Coluna 3: volume -->
+      <div class="flex items-center gap-2 justify-end min-w-[120px]">
         <i class="fas fa-volume-up"></i>
         <input
           id="volumeRange"
@@ -38,17 +53,9 @@
           max="1"
           step="0.01"
           value="0.5"
-          class="w-40 accent-[#FF4D8D]"
+          class="w-32 md:w-40 accent-[#FF4D8D]"
         >
       </div>
-
-      <button
-        id="closePlayerBtn"
-        class="text-xl ml-auto md:ml-4"
-        aria-label="Close player"
-      >
-        <i class="fas fa-times"></i>
-      </button>
     </div>
   </div>
 </template>
@@ -77,7 +84,6 @@ onMounted(() => {
   const volumeRange = document.getElementById('volumeRange') as HTMLInputElement | null
   const previewBtn = document.getElementById('previewTrack')
   const closePlayerBtn = document.getElementById('closePlayerBtn')
-
   const updateIcon = () => {
     if (!playIcon) return
     playIcon.classList.remove('fa-play', 'fa-pause')
