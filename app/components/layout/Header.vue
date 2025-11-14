@@ -5,6 +5,7 @@
         4VIBES
       </a>
       <div class="hidden md:flex space-x-8">
+        <a href="#home" class="font-tech text-sm tracking-[0.2em] hover:text-[#FF4D8D] transition-colors">HOME</a>
         <a href="#members" class="font-tech text-sm tracking-[0.2em] hover:text-[#FF4D8D] transition-colors">MEMBERS</a>
         <a href="#music" class="font-tech text-sm tracking-[0.2em] hover:text-[#FF4D8D] transition-colors">MUSIC</a>
         <a href="#gallery" class="font-tech text-sm tracking-[0.2em] hover:text-[#FF4D8D] transition-colors">GALLERY</a>

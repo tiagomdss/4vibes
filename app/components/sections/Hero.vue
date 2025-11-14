@@ -1,5 +1,5 @@
 <template>
-  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
     <!-- Background with overlay -->
     <div class="absolute inset-0 z-0">
       <img

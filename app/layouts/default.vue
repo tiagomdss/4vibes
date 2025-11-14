@@ -16,6 +16,7 @@
     <div class="cursor-outline hidden md:block"></div>
 
     <Header />
+    <MobileMenu />
     <main>
       <slot />
     </main>
@@ -27,6 +28,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue'
 import Header from '@/components/layout/Header.vue'
+import MobileMenu from '@/components/layout/MobileMenu.vue'
 import MusicPlayer from '@/components/player/MusicPlayer.vue'
 import Footer from '@/components/layout/Footer.vue'
 
@@ -35,8 +37,6 @@ onMounted(() => {
 
   const cursorDot = document.querySelector<HTMLElement>('.cursor-dot')
   const cursorOutline = document.querySelector<HTMLElement>('.cursor-outline')
-
-  if (!cursorDot || !cursorOutline) return
 
   const handleMouseMove = (e: MouseEvent) => {
     const posX = e.clientX
@@ -54,7 +54,9 @@ onMounted(() => {
   const handleHoverIn = () => cursorOutline.classList.add('hover')
   const handleHoverOut = () => cursorOutline.classList.remove('hover')
 
-  window.addEventListener('mousemove', handleMouseMove)
+  if (cursorDot && cursorOutline) {
+    window.addEventListener('mousemove', handleMouseMove)
+  }
 
   const hoverTargets = document.querySelectorAll<HTMLElement>(
     'a, button, .member-card, .gallery-img',
@@ -64,6 +66,32 @@ onMounted(() => {
     el.addEventListener('mouseenter', handleHoverIn)
     el.addEventListener('mouseleave', handleHoverOut)
   })
+
+  // Menu mobile
+  const menuToggle = document.getElementById('menuToggle')
+  const mobileMenu = document.getElementById('mobileMenu')
+  const closeMenu = document.getElementById('closeMenu')
+
+  const openMobileMenu = () => {
+    if (!mobileMenu) return
+    mobileMenu.classList.add('active')
+  }
+
+  const closeMobileMenu = () => {
+    if (!mobileMenu) return
+    mobileMenu.classList.remove('active')
+  }
+
+  menuToggle?.addEventListener('click', openMobileMenu)
+  closeMenu?.addEventListener('click', closeMobileMenu)
+
+  // Fechar o menu ao clicar em qualquer link dentro dele
+  if (mobileMenu) {
+    const mobileLinks = mobileMenu.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', closeMobileMenu)
+    })
+  }
 
   // Inicializa particles.js (se disponível no window)
   const particlesAny = (window as any)
@@ -117,11 +145,24 @@ onMounted(() => {
   }
 
   onBeforeUnmount(() => {
-    window.removeEventListener('mousemove', handleMouseMove)
+    if (cursorDot && cursorOutline) {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+
     hoverTargets.forEach((el) => {
       el.removeEventListener('mouseenter', handleHoverIn)
       el.removeEventListener('mouseleave', handleHoverOut)
     })
+
+    menuToggle?.removeEventListener('click', openMobileMenu)
+    closeMenu?.removeEventListener('click', closeMobileMenu)
+
+    if (mobileMenu) {
+      const mobileLinks = mobileMenu.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+      mobileLinks.forEach((link) => {
+        link.removeEventListener('click', closeMobileMenu)
+      })
+    }
   })
 })
 </script>
