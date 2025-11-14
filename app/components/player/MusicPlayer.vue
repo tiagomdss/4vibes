@@ -41,6 +41,14 @@
           class="w-40 accent-[#FF4D8D]"
         >
       </div>
+
+      <button
+        id="closePlayerBtn"
+        class="text-xl ml-auto md:ml-4"
+        aria-label="Close player"
+      >
+        <i class="fas fa-times"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -67,11 +75,8 @@ onMounted(() => {
   const playPauseBtn = document.getElementById('playPauseBtn')
   const playIcon = playPauseBtn?.querySelector('i') || null
   const volumeRange = document.getElementById('volumeRange') as HTMLInputElement | null
-
-  const platformButtonsIds = ['playSpotify', 'playApple', 'playDeezer', 'playYoutubeMusic']
-  const platformButtons = platformButtonsIds
-    .map((id) => document.getElementById(id))
-    .filter((btn): btn is HTMLElement => !!btn)
+  const previewBtn = document.getElementById('previewTrack')
+  const closePlayerBtn = document.getElementById('closePlayerBtn')
 
   const updateIcon = () => {
     if (!playIcon) return
@@ -94,6 +99,12 @@ onMounted(() => {
     updateIcon()
   }
 
+  const closePlayer = () => {
+    if (!playerEl) return
+    pause()
+    playerEl.classList.remove('active')
+  }
+
   const togglePlay = () => {
     if (isPlaying.value) pause()
     else play()
@@ -101,9 +112,13 @@ onMounted(() => {
 
   playPauseBtn?.addEventListener('click', togglePlay)
 
-  platformButtons.forEach((btn) => {
-    btn.addEventListener('click', play)
-  })
+  if (previewBtn) {
+    previewBtn.addEventListener('click', play)
+  }
+
+  if (closePlayerBtn) {
+    closePlayerBtn.addEventListener('click', closePlayer)
+  }
 
   if (volumeRange && audioPlayer.value) {
     audioPlayer.value.volume = parseFloat(volumeRange.value || '0.5')
@@ -126,7 +141,12 @@ onMounted(() => {
 
   onBeforeUnmount(() => {
     playPauseBtn?.removeEventListener('click', togglePlay)
-    platformButtons.forEach((btn) => btn.removeEventListener('click', play))
+    if (previewBtn) {
+      previewBtn.removeEventListener('click', play)
+    }
+     if (closePlayerBtn) {
+       closePlayerBtn.removeEventListener('click', closePlayer)
+     }
     window.removeEventListener('keydown', handleKeydown)
     if (audioPlayer.value) {
       audioPlayer.value.pause()

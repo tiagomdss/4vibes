@@ -37,32 +37,50 @@
             </p>
 
             <div class="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
-              <button
+              <a
+                href="https://open.spotify.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="flex items-center gap-3 bg-[#1DB954] text-black font-bold py-3 px-6 hover:scale-105 transition-transform"
-                id="playSpotify"
               >
                 <i class="fab fa-spotify text-2xl"></i> SPOTIFY
-              </button>
+              </a>
 
-              <button
+              <a
+                href="https://music.apple.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="flex items-center gap-3 bg-white text-black font-bold py-3 px-6 hover:scale-105 transition-transform"
-                id="playApple"
               >
                 <i class="fab fa-apple text-2xl"></i> APPLE MUSIC
-              </button>
+              </a>
 
-              <button
+              <a
+                href="https://www.deezer.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="flex items-center gap-3 bg-[#0f172a] text-white font-bold py-3 px-6 hover:scale-105 transition-transform"
-                id="playDeezer"
               >
                 <i class="fab fa-deezer text-2xl"></i> DEEZER
-              </button>
+              </a>
 
-              <button
+              <a
+                href="https://music.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="flex items-center gap-3 bg-[#ff0000] text-white font-bold py-3 px-6 hover:scale-105 transition-transform"
-                id="playYoutubeMusic"
               >
                 <i class="fab fa-youtube text-2xl"></i> YOUTUBE MUSIC
+              </a>
+
+              <button
+                id="previewTrack"
+                class="flex items-center gap-3 bg-[#FF4D8D] text-black font-bold py-3 px-6 hover:scale-105 transition-transform"
+              >
+                <i class="fas fa-play text-2xl"></i>
+                <span class="flex items-center gap-2">
+                  PREVIEW
+                </span>
               </button>
             </div>
           </div>
